@@ -1,0 +1,38 @@
+version: 2.1
+
+workflows:
+  hello_places_workflow:
+    jobs:
+      - hello_tokyo
+      - hello_osaka
+
+executors:
+  hello_executor:
+    docker:
+      - image: cimg/base:<<parameters.tag>>
+    parameters:
+      tag:
+        default: "2021.07"
+        type: string
+
+commands:
+  hello_generic_cmd:
+    parameters:
+      placeName:
+        type: string
+    steps:
+      - run: echo Hello, << parameters.placeName >>!
+
+jobs:
+  hello_tokyo:
+    executor: hello_executor
+    steps:
+      - checkout
+      - hello_generic_cmd:
+          placeName: "Tokyo"
+  hello_osaka:
+    executor: hello_executor
+    steps:
+      - checkout
+      - hello_generic_cmd:
+          placeName: "Osaka"
