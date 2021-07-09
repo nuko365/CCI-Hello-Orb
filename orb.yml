@@ -1,11 +1,5 @@
 version: 2.1
 
-workflows:
-  hello_places_workflow:
-    jobs:
-      - hello_tokyo
-      - hello_osaka
-
 executors:
   hello_executor:
     docker:
