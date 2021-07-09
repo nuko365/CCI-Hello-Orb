@@ -21,7 +21,7 @@ commands:
       placeName:
         type: string
     steps:
-      - run: echo Hello << parameters.placeName >>!
+      - run: echo Hello, << parameters.placeName >>!
 
 jobs:
   hello_tokyo:
