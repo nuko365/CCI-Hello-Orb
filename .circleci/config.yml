@@ -6,16 +6,23 @@ workflows:
       - hello_tokyo
       - hello_osaka
 
+executors:
+  hello_executor:
+    docker:
+      - image: cimg/base:<<parameters.tag>>
+    parameters:
+      tag:
+        default: "2021.07"
+        type: string
+
 jobs:
   hello_tokyo:
-    docker:
-      - image: cimg/base:2021.07
+    executor: hello_executor
     steps:
       - checkout
       - run: echo "Hello, Tokyo!"
   hello_osaka:
-    docker:
-      - image: cimg/base:2021.07
+    executor: hello_executor
     steps:
       - checkout
       - run: echo "Hello, Osaka!"
