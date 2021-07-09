@@ -1,0 +1,21 @@
+version: 2.1
+
+workflows:
+  hello_places_workflow:
+    jobs:
+      - hello_tokyo
+      - hello_osaka
+
+jobs:
+  hello_tokyo:
+    docker:
+      - image: cimg/base:2021.07
+    steps:
+      - checkout
+      - run: echo "Hello, Tokyo!"
+  hello_osaka:
+    docker:
+      - image: cimg/base:2021.07
+    steps:
+      - checkout
+      - run: echo "Hello, Osaka!"
