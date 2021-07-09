@@ -8,6 +8,7 @@ workflows:
     jobs:
       - myorb/hello_tokyo
       - myorb/hello_osaka
+      - hello_fukuoka
 
 jobs:
   hello_fukuoka:
