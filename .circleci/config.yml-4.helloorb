@@ -1,0 +1,19 @@
+version: 2.1
+
+orbs:
+  myorb: mayoct/hello@dev:alpha
+
+workflows:
+  hello_places_workflow:
+    jobs:
+      - myorb/hello_tokyo
+      - myorb/hello_osaka
+      - hello_fukuoka
+
+jobs:
+  hello_fukuoka:
+    executor: myorb/hello_executor
+    steps:
+      - checkout
+      - myorb/hello_generic_cmd:
+          placeName: "Fukuoka"
