@@ -8,3 +8,11 @@ workflows:
     jobs:
       - myorb/hello_tokyo
       - myorb/hello_osaka
+
+jobs:
+  hello_fukuoka:
+    executor: myorb/hello_executor
+    steps:
+      - checkout
+      - myorb/hello_generic_cmd:
+          placeName: "Fukuoka"
