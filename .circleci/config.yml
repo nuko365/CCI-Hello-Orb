@@ -15,14 +15,24 @@ executors:
         default: "2021.07"
         type: string
 
+commands:
+  hello_generic_cmd:
+    parameters:
+      placeName:
+        type: string
+    steps:
+      - run: echo Hello, << parameters.placeName >>!
+
 jobs:
   hello_tokyo:
     executor: hello_executor
     steps:
       - checkout
-      - run: echo "Hello, Tokyo!"
+      - hello_generic_cmd:
+          placeName: "Tokyo"
   hello_osaka:
     executor: hello_executor
     steps:
       - checkout
-      - run: echo "Hello, Osaka!"
+      - hello_generic_cmd:
+          placeName: "Osaka"
