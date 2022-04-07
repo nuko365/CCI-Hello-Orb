@@ -1,21 +1,19 @@
 version: 2.1
 
+orbs:
+  myorb: mayoct/hello@dev:alpha
+
 workflows:
   hello_places_workflow:
     jobs:
-      - hello_tokyo
-      - hello_osaka
+      - myorb/hello_tokyo
+      - myorb/hello_osaka
+      - hello_fukuoka
 
 jobs:
-  hello_tokyo:
-    docker:
-      - image: cimg/base:2021.07
+  hello_fukuoka:
+    executor: myorb/hello_executor
     steps:
       - checkout
-      - run: echo "Hello, Tokyo!"
-  hello_osaka:
-    docker:
-      - image: cimg/base:2021.07
-    steps:
-      - checkout
-      - run: echo "Hello, Osaka!"
+      - myorb/hello_generic_cmd:
+          placeName: "Fukuoka"
