@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  myorb: mayoct/hello@dev:alpha
+  myorb: nuko365/hello@dev:alpha
 
 workflows:
   hello_places_workflow:
